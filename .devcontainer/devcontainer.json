@@ -1,0 +1,61 @@
+{
+  "name": "weseek-bootcamp",
+  "dockerComposeFile": "compose.yml",
+  "service": "bootcamp",
+  "workspaceFolder": "/workspaces",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {"version":"18"},
+    "ghcr.io/devcontainers/features/ruby:1": {"version":"3.1.4"}
+  },
+  "customizations": {
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "args": ["-l"]
+          }
+        },
+        "files.eol": "\n",
+      
+        "eslint.workingDirectories": [{ "mode": "auto" }],
+      
+        // use vscode-stylelint
+        // see https://github.com/stylelint/vscode-stylelint
+        "stylelint.validate": ["css", "less", "scss"],
+        "stylelint.ignoreDisables": true,
+        "css.validate": false,
+        "less.validate": false,
+        "scss.validate": false,
+        
+        "editor.formatOnSave": true
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint",
+        "dbaeumer.vscode-eslint",
+				"cschleiden.vscode-github-actions",
+				"editorconfig.editorconfig",
+				"shinnn.stylelint",
+				"hex-ci.stylelint-plus",
+				"mikestead.dotenv",
+				"mhutchie.git-graph",
+				"eamodio.gitlens"
+      ]
+    }
+  },
+
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
+
+  // Uncomment the line below if you want to keep your containers running after VS Code shuts down.
+  // "shutdownAction": "none",
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo chown -R vscode:vscode /workspaces /usr/local/rvm/gems/default/",
+
+  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "vscode"
+}
